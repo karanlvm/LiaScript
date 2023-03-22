@@ -487,6 +487,143 @@ common sense. They’re sending us not the right people.
 
 ## Share your content 
 
+One of the advantages of LiaScript is that we can share content and even export the course into different formats so they can be used in different LMS. The subsections discuss the ways to share your content.
+
 ### Using links
 
+Courses can be witten in markdown and uploaded to any form of storage. The link of the markdown file can be shared and used at `https://liascript.github.io/` .
+
 ### Using Lia Exporter
+
+The LiaScript-Exporter can export educational content into different formats, so that LiaScript courses can also be utilized in different Learning Management Systems (LMS) or Readers for static content (PDF, ePub, ...). At the moment there is only support for SCORM1.2, as the most wide-spread exchange format. 
+
+To install LiaScript Exporter, run the following command:
+
+`npm install -g --verbose @liascript/exporter`
+
+#### LiaScript Exporter Basic Usage
+
+``` shell
+$ liaex
+No input defined
+LiaScript-Exporter
+
+-h --help            show this help
+-i --input           file to be used as input
+-p --path            path to be packed, if not set, the path of the input file is used
+-o --output          output file name (default is output), the ending is define by the format
+-f --format          scorm1.2, scorm2004, json, fullJson, web, ims, pdf (default is json)
+-v --version         output the current version
+
+-k --key             responsive voice key 
+
+SCORM settings:
+
+--scorm-organization       set the organization title
+--scorm-masteryScore       set the scorm masteryScore (a value between 0 -- 100), default is 0
+--scorm-typicalDuration    set the scorm duration, default is PT0H5M0S
+--scorm-iframe             use an iframe, when a SCORM starting parameter is not working
+
+IMS settings:
+
+--ims-indexeddb            Use IndexedDB to store data persistently
+
+WEB settings:
+
+--web-iframe               Use an iframed version to hide the course URL.
+--web-indexeddb            This will allow to store data within the browser using indexeddb, you can optionally pass a unique key (by default one is generated randomly).
+--web-zip                  By default the result is not zipped, you can change this with this parameter.
+
+Android settings:
+
+--android-sdk              Specify sdk.dir which is required for building.
+--android-appName          Name of the App (Main-title is used as default).
+--android-appId            Required to identify your App reverse url such as io.github.liascript
+--android-icon             Optional icon with 1024x1024 px
+--android-splash           Optional splash image with 2732x2732 px
+--android-splashDuration   Duration for splash-screen default 0 milliseconds
+--android-preview          Open course in Android-Studio
+
+PDF settings:
+
+--pdf-stylesheet           Inject an local CSS for changing the appearance.
+--pdf-theme                LiaScript themes: default, turquoise, blue, red, yellow
+--pdf-timeout              Set an additional time horizon to wait until finished.
+
+https://github.com/puppeteer/puppeteer/blob/main/docs/api/puppeteer.pdfoptions.md
+
+--pdf-preview              Open preview-browser (default false), print not possible
+--pdf-scale                Scale of the webpage rendering. Defaults to 1. Scale amount must be between 0.1 and 2.
+--pdf-displayHeaderFooter  Display header and footer. Defaults to false.
+--pdf-headerTemplate       HTML template for the print header, inject classes date, title, url, pageNumber, totalPages
+--pdf-footerTemplate       HTML template for the print footer. Should use the same format as the headerTemplate
+--pdf-printBackground      Print background graphics. Defaults to false
+--pdf-landscape            Paper orientation. Defaults to false.
+--pdf-pageRanges           Paper ranges to print, e.g., "1-5, 8, 11-13"
+--pdf-format               Paper format. If set, takes priority over width or height options. Defaults to a4.
+--pdf-width                Paper width, accepts values labeled with units.
+--pdf-height               Paper height, accepts values labeled with units.
+--pdf-margin-top           Top margin, accepts values labeled with units.
+--pdf-margin-right         Right margin, accepts values labeled with units.
+--pdf-margin-bottom        Bottom margin, accepts values labeled with units.
+--pdf-margin-left          Left margin, accepts values labeled with units. 
+--pdf-preferCSSPageSize    Give any CSS @page size declared in the page priority over what is declared in width and height or format options.
+--pdf-omitBackground       Hides default white background and allows capturing screenshots with transparency. Defaults to true.
+
+Project settings:
+
+--project-no-meta          Disable the generation of meta information for OpenGraph and Twitter-cards.
+--project-no-categories    Disable the filter for categories/tags.
+--project-category-blur    Enable this and the categories will be blurred instead of deleted.
+--project-generate-pdf     PDFs are automatically generated and added to every card.
+--project-generate-cache   Only generate new files, if they do not exist.
+
+RDF settings:
+
+--rdf-format               Output format n-quads, json-ld (defaults to json-ld).
+--rdf-preview              Output the result to the console.
+--rdf-url                  Refer to an external URL when parsing a local project.
+--rdf-type                 Course frm schmema.org is applied as default, overwrite this with EducationalResource, etc.
+--rdf-license              Add a license-URL, otherwise if url was provided as input, this will check for an existing LICENSE file.
+--rdf-educationalLevel     Typically beginner, intermediate or advanced, and formal sets of level indicators.
+```
+
+### SCORM1.2
+
+If you want to generate a SCORM1.2 conformant package of you LiaScript-course,
+use the following command:
+
+``` shell
+C:\Users\karan\OneDrive\Desktop>liaex -i internship/README.md --format scorm1.2 --output liaout
+null C:\Users\karan\AppData\Local\Temp\lia2023222-15816-1lbuxyi.u425e
+internship
+internship
+internship\README.md
+[13:17:34] SCORM 'Init'
+[13:17:34] SCORM 'create C:\Users\karan\AppData\Local\Temp\lia2023222-15816-1lbuxyi.u425e\pro\imsmanifest.xml'
+[13:17:34] SCORM 'create C:\Users\karan\AppData\Local\Temp\lia2023222-15816-1lbuxyi.u425e\pro\metadata.xml'
+[13:17:34] SCORM 'create C:\Users\karan\AppData\Local\Temp\lia2023222-15816-1lbuxyi.u425e\pro\adlcp_rootv1p2.xsd'
+[13:17:34] SCORM 'create C:\Users\karan\AppData\Local\Temp\lia2023222-15816-1lbuxyi.u425e\pro\imscp_rootv1p1p2.xsd'
+[13:17:34] SCORM 'create C:\Users\karan\AppData\Local\Temp\lia2023222-15816-1lbuxyi.u425e\pro\imsmd_rootv1p2p1.xsd'
+[13:17:34] SCORM 'create C:\Users\karan\AppData\Local\Temp\lia2023222-15816-1lbuxyi.u425e\pro\ims_xml.xsd'
+[13:17:34] SCORM 'Archiving C:\Users\karan\AppData\Local\Temp\lia2023222-15816-1lbuxyi.u425e\pro to liaout.zip'
+[13:17:36] SCORM 'liaout.zip 6043787 total bytes' 
+
+```
+
+The format is `scorm1.2` and the input folder is `project/README.md`. All the
+content and sub-folders of this folder is then coppied into your SCORM.zip. The
+name is defined by your output definition and contains the current version
+number of you course as well as the current date.
+
+> Note: SCORM 1.2 is too restrictive for storing data, that is why we currently
+> only support to store location information, all states of quizzes, surveys, etc.
+> will be lost after reload.
+
+### PDF
+
+The content can be exported in PDF format through the following command 
+
+``` shell
+C:\Users\karan\OneDrive\Desktop>liaex --format pdf -i internship/README.md
+```
