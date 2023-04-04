@@ -100,7 +100,7 @@ You can also create tables like this-
 
 ### Adding Images
 
-Syntax: `'![Alt Text](image link)'` 
+Syntax: `![Alt Text](image link)` 
 
 ![Greek vase painting: seated young man writes on a wax tablet with a stylus](https://www.cvaonline.org/images/pottery/painters/keypieces/tiverios/21-p156bottom-medium.jpg "The so-called 'School cup' signed by the vase painter Douris. The seated man writes on a wax tablet with a stylus, showing the boy to the right how to do it. Early 5th c BCE. Berlin, Staatliche Museen.")
 
