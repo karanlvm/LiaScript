@@ -8,13 +8,16 @@ version:  0.0.1
 language: en
 
 narrator: US English Female
-script:   https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js
+script:   ./lib/chartist.min.js
           https://felixhao28.github.io/JSCPP/dist/JSCPP.es5.min.js
 
 import: https://raw.githubusercontent.com/LiaTemplates/algebrite/0.2.1/README.md 
         https://raw.githubusercontent.com/liaTemplates/TextAnalysis/main/README.md
 
 -->
+# LiaScript Course
+
+This a LiaScript course designed to teach you all the essentials required to write a course in LiaScript
 
 # Introduction to LiaScript
 
@@ -28,26 +31,56 @@ Overall, LiaScript is a powerful tool for creating engaging and interactive onli
 
 
 # LiaScript Setup
+### Using VS Code Extension
+
+**Prerequistes-**
+
 
 1) [Download VS Code](https://code.visualstudio.com/download)
+
+**Install extension-**
+
 
 2) Navigate to the extentions tab in VS code
 
 3) Download [LiaScript-Preview](https://marketplace.visualstudio.com/items?itemName=LiaScript.liascript-preview)
 
-4) Create a new README.md file and press alt+L to open up the live server preview for the course
+**Start Documenting-**
 
 
+4) Create a new README.md file and press alt+shift+L to open up the live server preview for the course.Then open http://localhost:8000/home in your browser. 
+
+### Using Node
+
+You can also use NPM for the Lia Dev Server. 
+
+Steps to Install -
+
+1) Open Terminal and make sure node is installed. 
+
+2) Run this command `npm install g @liascript/devserver` 
+
+Steps to Run Devserver- 
+
+1) Open terminal and run `liascript-devserver`
+
+2) Then open http://localhost:3000 on your browser. 
 
 
-## Writing your course
+## Syntax for building your course
 
 You can use common [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) syntax to create your course.
 
 
+### Adding Links
 
+Syntax: `[Text to be displayed](link)`
+
+To create a hyperlink, use the above syntax to add the text followed by the link. 
 
 ### Adding lists
+
+Syntax: create the table using ` | ` and the partions between the rows with ` :----- ` symbols 
 
 1. Ordered lists can be create by simply specifiying a number followed by a (.) before the title of the list.
 2. Unordered lists can be created by using the (*) symbol before the title of the list. 
@@ -62,37 +95,43 @@ You can also create tables like this-
 | Header 1 | Header 2 |
 | :------- | :------- |
 | Item 1   | Item 2   |
+| Item 3   | Item 4   |
 
-Hint: create the table using [ | ] and the partions between the rows with [ :----- ] symbols 
-
-Tables are elaborated below. 
 
 ### Adding Images
 
+Syntax: `'![Alt Text](image link)'` 
+
 ![Greek vase painting: seated young man writes on a wax tablet with a stylus](https://www.cvaonline.org/images/pottery/painters/keypieces/tiverios/21-p156bottom-medium.jpg "The so-called 'School cup' signed by the vase painter Douris. The seated man writes on a wax tablet with a stylus, showing the boy to the right how to do it. Early 5th c BCE. Berlin, Staatliche Museen.")
 
-Images can be added using '! [Alt Text] ( image link)'  {No spaces}
+![This is a GIF](https://media.giphy.com/media/l0G16FRujv2fiD3Ne/giphy.gif "This is an example of a")
+
 
 ### Adding music
 
+Syntax: `?[ Alt Text]( Audio Link)` 
+
 ?[Sappho: Ode to Aphrodite](http://homoecumenicus.com/ioannidis_sappho_aphrodite.mp3 "Ancient Greek lyrical poem by Sappho (610-580BC). Original music by IOANNIDIS")
 
-Audios can be added using '? [ Alt Text] ( Audio Link)' 
+
 
 ### Adding Videos
 
+Syntax: `!?[Alt Text](Link)` 
+
 !?[Greek Art History from Goodbye-Art Academy](https://www.youtube.com/watch?v=Me0Psn6VrTg "_Black-Figure Dinos (Mixing Vessel); Warships (int.); Heroic Scenes (top)_, c. 520-515 BC. Circle of Antimenes Painter (Greek, Attic, active c. 530-510 BC). Veramic; diam. 50.8 cm; overall: 33.6 cm; rim diam. 34 cm. The Cleveland Museum of Art, Jon L. Severance Fund, 1971.46")
 
-Since a video is nothing but images and audio, the syntax is quite similar and it is ' !? [ Alt Text] (Link)' 
+
 
 ### Other Links 
+
+Syntax: `??[Alt Text](Link)`
 
 ??[Neck Amphora](https://sketchfab.com/3d-models/197016-neck-amphora-0bb2525bdd734bf69d5a7b2b051928ad "_Neck Amphora_ (515-510 BC). Painter of Berlin 1899 (Greek). Greece, Attic, 6th Century BC Black-figure terracotta. Diameter: 29 cm (11 7/16 in.); Overall: 39.8 cm (15 11/16 in.). Andrew R. and Martha Holden Jennings Fund 1970.16 ") 
 
 ??[Capacitor simulation by Falstad](https://www.falstad.com/circuit/circuitjs.html?startCircuit=cap.txt "A capacitor is a device that stores charge. As current flows into the capacitor, the voltage across the capacitor increases. As its voltage approaches the source voltage (the 5V voltage source shown on the left), the current flowing into the capacitor decreases.") 
 
 
-Links that do not fall under the conventional three categories of audio, videos and images can be linked using the '??' prefix.
 
 ## Animations 
 Animations in LiaScript are associated with double braces `{begin-end}`. 
@@ -113,6 +152,8 @@ certain step.
     --{{2}}--
 You can add a number in double braces and the text below it, will be TTS. 
 
+
+
 ## Tables and charts
 
 ### 1. Basics
@@ -123,9 +164,12 @@ You can add a number in double braces and the text below it, will be TTS.
 | col 2 is      | centered      |   $12 |
 | zebra stripes | are neat      |    $1 |
 
+
 Tables are created by using `|` symbols to define the columns. Below the heading of each column, `-------` is added if a `:` is added on the right side of the hypens, then the text becomes right justified. Add it on both the ends and the text becomes center justified. By default, all text is left justified.  
 
 ### 2. Bar charts 
+
+Syntax to change or remove charts- `<!-- data-transpose data-type="none" -->` add the type of chart you want as well
 
 | Animal          | weight in kg | Lifespan years | Mitogen |
 | --------------- | ------------:| --------------:| -------:|
@@ -149,7 +193,7 @@ The chart created doesn't always have to be a bar chart. LiaScipt will automatic
 
 ### 4. Combination with animations
 
-<!-- data-transpose data-type="funnel" -->
+<!-- data-transpose data-type="none" -->
 | Music-Style {0-1}{1994} {1}{2014} |      Student rating |
 |:--------------------------------- | -------------------:|
 | Classic                           |   {0-1}{50} {1}{20} |
@@ -159,7 +203,7 @@ The chart created doesn't always have to be a bar chart. LiaScipt will automatic
 | Hard-Rock                         | {0-1}{350} {1}{400} |
 | Samba                             | {0-1}{250} {1}{230} |
 
-You can combine animations into tables as well. If you would like to specify a type of chart that should be used for visualization,  `<!-- data-transpose data-type="type-of-chart" -->` is the syntax. 
+
 
 ### 5. Customization
 
@@ -191,6 +235,7 @@ Similarly, we can also create heatmaps using similar syntax and also add data-ti
 
 ## ASCII-Art
 
+It is possible to create ASCII art by using  ```ascii``` at the start and the end
 
 ### Type 1
 
@@ -245,6 +290,20 @@ Similarly, we can also create heatmaps using similar syntax and also add data-ti
             192.0.2.1:7000      192.0.2.15:50000    192.0.2.210:49191
 ````
 
+
+#### Animal ASCII
+
+````ascii
+
+       _.---._    /\\
+    ./'       "--`\//
+  ./              o \          .-----.
+ /./\  )______   \__ \        ( help! )
+./  / /\ \   | \ \  \ \       /`-----'
+   / /  \ \  | |\ \  \7--- ooo ooo ooo ooo ooo ooo
+
+````
+
 ### Combining ASCII with animations 
 
 ---
@@ -268,10 +327,12 @@ Bob                Alice
 
 ## Checkboxes
 
+Syntax: `- [ ] Task 2` and adding a `x` between the [] will make the box marked. 
+
 - [x] Task 1
 - [ ] Task 2
 
-The syntax to define the checkboxes are `- [ ] Task 2` and adding a `x` between the [] will make the box marked. 
+
 
 ## Quizes
 
@@ -327,7 +388,7 @@ $$
 
 ==>
 
-$$
+$$  
    \therefore I = \frac{225}{2}
 $$
 
@@ -344,6 +405,11 @@ Can you define a quiz with less effort?
 - [[x]] ... and lowercase `x` too ...
 - [[ ]] **as defined in the first line** ...
 
+` This is LIa Syntax`
+
+"This is MD syntax"
+
+
 ### Enter your answer 
 
 Syntax for the answer is : `[[answer]]`
@@ -357,7 +423,7 @@ What did the *fish* say when he hit a *concrete wall*?
 Teaching other language-basics is also possible, for this example we applied [JSCPP](https://github.com/felixhao28/JSCPP)
 to run simple C++ programs:
 
-```cpp
+```cpp 
 #include <iostream>
 using namespace std;
 
@@ -371,12 +437,15 @@ int main() {
     cout << "final result = " << rslt << endl;
     return 0;
 }
-```
+``` 
 <script>
   var output = "";
+  JSCPP.
   JSCPP.run(`@input`, "", {stdio: {write: s => { output += s }}});
   output;
 </script>
+
+
 
 
 ### More Coding 
